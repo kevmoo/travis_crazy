@@ -236,7 +236,7 @@ export GIT_ASKPASS=echo
 
 travis_fold start git.checkout
   if [[ ! -d kevmoo/travis_crazy/.git ]]; then
-    travis_cmd git\ clone\ --depth\=50\ --branch\=\'\master'\ \ https://github.com/kevmoo/travis_crazy --assert --echo --retry --timing
+    travis_cmd git\ clone\ --depth\=50\ --branch\=\'master\'\ \ https://github.com/kevmoo/travis_crazy --assert --echo --retry --timing
   else
     travis_cmd git\ -C\ kevmoo/travis_crazy\ fetch\ origin --assert --echo --retry --timing
     travis_cmd git\ -C\ kevmoo/travis_crazy\ reset\ --hard --assert --echo
