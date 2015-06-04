@@ -234,11 +234,11 @@ done
 
 travis_fold start content_shell_dependencies_install
   echo -e "\033[33;1mInstalling Content Shell dependencies\033[0m"
-  sudo sh -c 'echo "deb http://gce_debian_mirror.storage.googleapis.com precise contrib non-free" >> /etc/apt/sources.list'
-  sudo sh -c 'echo "deb http://gce_debian_mirror.storage.googleapis.com precise-updates contrib non-free" >> /etc/apt/sources.list'
-  sudo sh -c 'apt-get update'
-  sudo sh -c 'echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections'
-  sudo sh -c 'apt-get install --no-install-recommends -y -q chromium-browser libudev0 ttf-kochi-gothic ttf-kochi-mincho ttf-mscorefonts-installer ttf-indic-fonts ttf-dejavu-core ttf-indic-fonts-core fonts-thai-tlwg msttcorefonts xvfb'
+  sh -c 'echo "deb http://gce_debian_mirror.storage.googleapis.com precise contrib non-free" >> /etc/apt/sources.list'
+  sh -c 'echo "deb http://gce_debian_mirror.storage.googleapis.com precise-updates contrib non-free" >> /etc/apt/sources.list'
+  sh -c 'apt-get update'
+  sh -c 'echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections'
+  sh -c 'apt-get install --no-install-recommends -y -q chromium-browser libudev0 ttf-kochi-gothic ttf-kochi-mincho ttf-mscorefonts-installer ttf-indic-fonts ttf-dejavu-core ttf-indic-fonts-core fonts-thai-tlwg msttcorefonts xvfb'
 travis_fold end content_shell_dependencies_install
 
 export GIT_ASKPASS=echo
