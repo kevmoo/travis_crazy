@@ -320,7 +320,7 @@ fi
 
 travis_cmd dart\ --version --echo --timing
 travis_result $?
-travis_cmd content_shell\ --version --echo --timing
+travis_cmd content_shell\ --dump-render-tree --echo --timing
 travis_result $?
 echo -e "\nDone. Your build exited with $TRAVIS_TEST_RESULT."
 
