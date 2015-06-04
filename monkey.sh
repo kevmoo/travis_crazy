@@ -298,7 +298,7 @@ if [[ -f pubspec.yaml ]]; then
   travis_cmd pub\ get --assert --echo --timing
 fi
 
-travis_cmd ./tool/travis.sh --echo --timing
+travis_cmd dart\ --version --echo --timing
 travis_result $?
 echo -e "\nDone. Your build exited with $TRAVIS_TEST_RESULT."
 
