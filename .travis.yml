@@ -3,5 +3,10 @@ sudo: false
 dart: stable
 with_content_shell: true
 script:
+  - set -e
   - which dart
   - which content_shell
+  - pwd
+  - ls
+  - ls $HOME
+  - echo $PATH

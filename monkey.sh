@@ -318,9 +318,19 @@ if [[ -f pubspec.yaml ]]; then
   travis_cmd pub\ get --assert --echo --timing
 fi
 
+travis_cmd set\ -e --echo --timing
+travis_result $?
 travis_cmd which\ dart --echo --timing
 travis_result $?
 travis_cmd which\ content_shell --echo --timing
+travis_result $?
+travis_cmd pwd --echo --timing
+travis_result $?
+travis_cmd ls --echo --timing
+travis_result $?
+travis_cmd ls\ \$HOME --echo --timing
+travis_result $?
+travis_cmd echo\ \$PATH --echo --timing
 travis_result $?
 echo -e "\nDone. Your build exited with $TRAVIS_TEST_RESULT."
 
