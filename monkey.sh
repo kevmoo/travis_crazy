@@ -292,12 +292,12 @@ echo -e "\033[33;1mand mention \`@a14n\`, \`@devoncarew\` and \`@sethladd\` in t
 
 travis_fold start dart_install
   echo -e "\033[33;1mInstalling Dart\033[0m"
-  travis_cmd curl\ https://storage.googleapis.com/dart-archive/channels/stable/release/latest/sdk/dartsdk-linux-x64-release.zip\ \>\ dartsdk.zip --assert --echo --timing
-  travis_cmd unzip\ dartsdk.zip\ \>\ /dev/null --assert --echo --timing
-  travis_cmd rm\ dartsdk.zip --assert --echo --timing
-  travis_cmd export\ DART_SDK\=\"\$\{PWD\%/\}/dart-sdk\" --assert --echo --timing
+  travis_cmd curl\ https://storage.googleapis.com/dart-archive/channels/stable/release/latest/sdk/dartsdk-linux-x64-release.zip\ \>\ \$HOME/dartsdk.zip --assert --echo --timing
+  travis_cmd unzip\ \$HOME/dartsdk.zip\ -d\ \$HOME\ \>\ /dev/null --assert --echo --timing
+  travis_cmd rm\ \$HOME/dartsdk.zip --assert --echo --timing
+  travis_cmd export\ DART_SDK\=\"\$HOME/dart-sdk\" --assert --echo --timing
   travis_cmd export\ PATH\=\"\$DART_SDK/bin:\$PATH\" --assert --echo --timing
-  travis_cmd export\ PATH\=\"\~/.pub-cache/bin:\$PATH\" --assert --echo --timing
+  travis_cmd export\ PATH\=\"\$HOME/.pub-cache/bin:\$PATH\" --assert --echo --timing
 travis_fold end dart_install
 
 travis_fold start content_shell_install
