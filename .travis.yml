@@ -3,5 +3,5 @@ sudo: false
 dart: stable
 with_content_shell: true
 script:
-  - dart --version
+  - which dart
   - which content_shell
