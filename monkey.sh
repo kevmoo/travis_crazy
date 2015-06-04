@@ -302,8 +302,8 @@ travis_fold end dart_install
 
 travis_fold start content_shell_install
   echo -e "\033[33;1mInstalling Content Shell\033[0m"
-  travis_cmd mkdir\ content_shell --assert --echo --timing
-  travis_cmd cd\ content_shell --assert --echo --timing
+  travis_cmd mkdir\ \$HOME/content_shell --assert --echo --timing
+  travis_cmd cd\ \$HOME/content_shell --assert --echo --timing
   travis_cmd curl\ https://storage.googleapis.com/dart-archive/channels/stable/release/latest/dartium/content_shell-linux-x64-release.zip\ \>\ content_shell.zip --assert --echo --timing
   travis_cmd unzip\ content_shell.zip\ \>\ /dev/null --assert --echo --timing
   travis_cmd rm\ content_shell.zip --assert --echo --timing
