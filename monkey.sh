@@ -232,6 +232,15 @@ for path_entry in $HOME/.local/bin $HOME/bin ; do
   fi
 done
 
+travis_fold start content_shell_dependencies_install
+  echo -e "\033[33;1mInstalling Content Shell dependencies\033[0m"
+  sudo sh -c 'echo "deb http://gce_debian_mirror.storage.googleapis.com precise contrib non-free" >> /etc/apt/sources.list'
+  sudo sh -c 'echo "deb http://gce_debian_mirror.storage.googleapis.com precise-updates contrib non-free" >> /etc/apt/sources.list'
+  sudo sh -c 'apt-get update'
+  sudo sh -c 'echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections'
+  sudo sh -c 'apt-get install --no-install-recommends -y -q chromium-browser libudev0 ttf-kochi-gothic ttf-kochi-mincho ttf-mscorefonts-installer ttf-indic-fonts ttf-dejavu-core ttf-indic-fonts-core fonts-thai-tlwg msttcorefonts xvfb'
+travis_fold end content_shell_dependencies_install
+
 export GIT_ASKPASS=echo
 
 travis_fold start git.checkout
@@ -291,6 +300,17 @@ travis_fold start dart_install
   travis_cmd export\ PATH\=\"\~/.pub-cache/bin:\$PATH\" --assert --echo --timing
 travis_fold end dart_install
 
+travis_fold start content_shell_install
+  echo -e "\033[33;1mInstalling Content Shell\033[0m"
+  travis_cmd mkdir\ content_shell --assert --echo --timing
+  travis_cmd cd\ content_shell --assert --echo --timing
+  travis_cmd curl\ https://storage.googleapis.com/dart-archive/channels/stable/release/latest/dartium/content_shell-linux-x64-release.zip\ \>\ content_shell.zip --assert --echo --timing
+  travis_cmd unzip\ content_shell.zip\ \>\ /dev/null --assert --echo --timing
+  travis_cmd rm\ content_shell.zip --assert --echo --timing
+  travis_cmd export\ PATH\=\"\$\{PWD\%/\}/\$\(ls\):\$PATH\" --assert --echo --timing
+  travis_cmd cd\ - --assert --echo --timing
+travis_fold end content_shell_install
+
 travis_cmd dart\ --version --echo
 echo
 
@@ -299,6 +319,8 @@ if [[ -f pubspec.yaml ]]; then
 fi
 
 travis_cmd dart\ --version --echo --timing
+travis_result $?
+travis_cmd content_shell\ --version --echo --timing
 travis_result $?
 echo -e "\nDone. Your build exited with $TRAVIS_TEST_RESULT."
 
