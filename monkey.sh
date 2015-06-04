@@ -275,7 +275,7 @@ export TRAVIS_REPO_SLUG=kevmoo/travis_crazy
 export TRAVIS_OS_NAME=linux
 export TRAVIS_LANGUAGE=dart
 export TRAVIS_TAG=''
-export TRAVIS_DART_VERSION=["stable", "dev"]
+export TRAVIS_DART_VERSION=stable
 echo -e "\033[33;1mDart for Travis-CI is not officially supported, but is community maintained.\033[0m"
 echo -e "\033[33;1mPlease file any issues using the following link\033[0m"
 echo -e "\033[33;1m  https://github.com/travis-ci/travis-ci/issues/new?labels=community:dart\033[0m"
@@ -283,10 +283,7 @@ echo -e "\033[33;1mand mention \`@a14n\`, \`@devoncarew\` and \`@sethladd\` in t
 
 travis_fold start dart_install
   echo -e "\033[33;1mInstalling Dart\033[0m"
-  export TRAVIS_CMD=no_script
-  echo -e "Only 'stable' and 'dev' can be used as dart version for now"
-  false
-  travis_cmd curl\ https://storage.googleapis.com/dart-archive/channels/\[\"stable\",\ \"dev\"\]/release/latest/sdk/dartsdk-linux-x64-release.zip\ \>\ dartsdk.zip --assert --echo --timing
+  travis_cmd curl\ https://storage.googleapis.com/dart-archive/channels/stable/release/latest/sdk/dartsdk-linux-x64-release.zip\ \>\ dartsdk.zip --assert --echo --timing
   travis_cmd unzip\ dartsdk.zip\ \>\ /dev/null --assert --echo --timing
   travis_cmd rm\ dartsdk.zip --assert --echo --timing
   travis_cmd export\ DART_SDK\=\"\$\{PWD\%/\}/dart-sdk\" --assert --echo --timing
