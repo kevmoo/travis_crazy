@@ -4,4 +4,4 @@ dart: stable
 with_content_shell: true
 script:
   - dart --version
-  - content_shell --dump-render-tree
+  - which content_shell
